@@ -45,12 +45,12 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   var inGlobalTouch = false;
   var inLocalTouch = false;
 
-  function globalTouchStart() {
-    inGlobalTouch = true;
-  }
-  function globalTouchEnd() {
-    inGlobalTouch = false;
-  }
+  // function globalTouchStart() {
+  //   inGlobalTouch = true;
+  // }
+  // function globalTouchEnd() {
+  //   inGlobalTouch = false;
+  // }
 
   function getTouch(e) {
     if (e.targetTouches) {
@@ -87,7 +87,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
         clearInterval(easingLoop);
       }
 
-      e.stopPropagation();
+      // e.stopPropagation();
     }
   }
   function touchMove(e) {
@@ -115,7 +115,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       }
 
       if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
+        // e.stopPropagation();
         e.preventDefault();
       }
     }
@@ -152,21 +152,21 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 
   if (supportsTouch) {
-    i.event.bind(window, 'touchstart', globalTouchStart);
-    i.event.bind(window, 'touchend', globalTouchEnd);
+    // i.event.bind(window, 'touchstart', globalTouchStart);
+    // i.event.bind(window, 'touchend', globalTouchEnd);
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
   } else if (supportsIePointer) {
     if (window.PointerEvent) {
-      i.event.bind(window, 'pointerdown', globalTouchStart);
-      i.event.bind(window, 'pointerup', globalTouchEnd);
+      // i.event.bind(window, 'pointerdown', globalTouchStart);
+      // i.event.bind(window, 'pointerup', globalTouchEnd);
       i.event.bind(element, 'pointerdown', touchStart);
       i.event.bind(element, 'pointermove', touchMove);
       i.event.bind(element, 'pointerup', touchEnd);
     } else if (window.MSPointerEvent) {
-      i.event.bind(window, 'MSPointerDown', globalTouchStart);
-      i.event.bind(window, 'MSPointerUp', globalTouchEnd);
+      // i.event.bind(window, 'MSPointerDown', globalTouchStart);
+      // i.event.bind(window, 'MSPointerUp', globalTouchEnd);
       i.event.bind(element, 'MSPointerDown', touchStart);
       i.event.bind(element, 'MSPointerMove', touchMove);
       i.event.bind(element, 'MSPointerUp', touchEnd);
